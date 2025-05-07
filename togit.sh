@@ -8,7 +8,7 @@ from="/home/tim/www/react/v18o/iot/edgewater"
 to="/home/tim/www/react/v18o/tags/$tag"
 
 # Copy all files from $from to $to, excluding .pio directory
-rsync -av --exclude='prod/' --exclude='dist' --exclude='.git/' "$from/" "$to/"
+rsync -av --exclude='.git/' "$from/" "$to/"
 
 git add . -A 
 git commit -m "$tag"
