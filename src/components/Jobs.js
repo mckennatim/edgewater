@@ -1,5 +1,7 @@
 import React,{useContext, useState} from 'react'
 import {AContext} from '../contexts/acontext'
+import Countdown from 'react-countdown';
+import MobileFirstControlGroups from './MobileFirstControlGroups';
 
 
 export default function Jobs (){
@@ -34,6 +36,8 @@ export default function Jobs (){
 
   return(
     <div style ={styles.jobs.div0} >
+      <Countdown date={Date.now() + 100000} />
+      {MobileFirstControlGroups()}
       Jobsaa
       {renderJobs()}
     </div>

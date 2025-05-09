@@ -2922,17 +2922,17 @@ var initialState = {
     darr: [0, 22, 1, -1, -1],
     timeleft: 0
   },
-  de_zone2: {
+  zone2: {
     ctype: "relay",
     darr: [0, 22, 2, 0, 0],
     timeleft: 0
   },
-  de_zone3: {
+  zone3: {
     ctype: "relay",
     darr: [0, 22, 3, 1, 0],
     timeleft: 0
   },
-  de_zone4: {
+  zone4: {
     ctype: "relay",
     darr: [0, 22, -1, 2, 0],
     timeleft: 0
@@ -3063,6 +3063,14 @@ var NavCtrl = function NavCtrl(props) {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " ", title, " ", devInfo.dev, " ", panes, " ", appid, " ", dev1), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", {
       style: styles.nav.ul
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
+      style: styles.nav.li
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
+      onClick: handlePath('/jobs')
+    }, "jobs")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
+      style: styles.nav.li
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
+      onClick: handlePath('/addjob')
+    }, "addjob")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
       style: styles.nav.li
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
       onClick: handlePath('/help')
@@ -3352,13 +3360,13 @@ compoi["Help"] = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().lazy(
   return __webpack_require__.e(/*! import() */ "src_components_Help_js").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Help.js */ "./src/components/Help.js"));
 });
 compoi["Jobs"] = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().lazy(function () {
-  return __webpack_require__.e(/*! import() */ "src_components_Jobs_js").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Jobs.js */ "./src/components/Jobs.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_react-countdown_dist_index_es_js"), __webpack_require__.e("src_components_Jobs_js")]).then(__webpack_require__.bind(__webpack_require__, /*! ./components/Jobs.js */ "./src/components/Jobs.js"));
 });
 compoi["AddJob"] = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().lazy(function () {
   return __webpack_require__.e(/*! import() */ "src_components_AddJob_js").then(__webpack_require__.bind(__webpack_require__, /*! ./components/AddJob.js */ "./src/components/AddJob.js"));
 });
 compoi["Control"] = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_mui_icons-material_esm_Block_js-node_modules_mui_icons-material_esm_Sign-3ea987"), __webpack_require__.e("src_components_Control_js")]).then(__webpack_require__.bind(__webpack_require__, /*! ./components/Control.js */ "./src/components/Control.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_react-countdown_dist_index_es_js"), __webpack_require__.e("vendors-node_modules_mui_icons-material_esm_Block_js-node_modules_mui_icons-material_esm_Sign-3ea987"), __webpack_require__.e("src_components_Control_js")]).then(__webpack_require__.bind(__webpack_require__, /*! ./components/Control.js */ "./src/components/Control.js"));
 });
 var multi = {
   "default": "control",
@@ -3610,7 +3618,7 @@ var storageLocal = function storageLocal(itemName) {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("0fd259bdacc7991e8d0c")
+/******/ 		__webpack_require__.h = () => ("0997b46aa17a4bc917ce")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
@@ -3819,4 +3827,4 @@ var storageLocal = function storageLocal(itemName) {
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=main.0fd259bdacc7991e8d0c.js.map
+//# sourceMappingURL=main.0997b46aa17a4bc917ce.js.map

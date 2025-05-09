@@ -1,4 +1,6 @@
 import React, { useContext, useState, useEffect, useReducer } from "react";
+import Countdown from 'react-countdown';
+import MutuallyExclusiveControlGroups from './MutuallyExclusiveControlGroups';
 import Icon from "@mui/material/Icon";
 import { 
   SignalCellularAlt, 
@@ -22,8 +24,11 @@ const lsh = ls.getItem();
 console.log("in control ", lsh);
 
 export default function Control() {
-  
+ 
   const [connected, setConnected]= useState(false)
+  const [onoff, setOnoff] = useState(0);
+  const [tsec, setTsec] = useState(100);  
+  const [srkey, setSrkey] = useState("zone0");
   const [status, setStatus] = useState("blur-disconnected");
   const [client, publish] = useContext(Context);
   client.onMessageArrived = onMessageArrived;
@@ -44,17 +49,27 @@ export default function Control() {
     const { nsarr, processed_message } = processMessage(message, devs, state);
     console.log('nsarr: ', nsarr);
     console.log('processed_message: ', processed_message);
-    const {dev}=processed_message
-    if (dev == dev1) {setConnected(true);}
+    const {dev, payload}=processed_message
+
     console.log('dev: ', dev, 'dev1: ', dev1, 'connected: ', connected);
     if (nsarr.length > 0) {
       nsarr.map((ns) => {
         const key = Object.keys(ns)[0];
         const action = { type: key, payload: ns[key] };
-        console.log('action: ', action.payload);
+        console.log('action: ', action.payload, 'key: ', key);
         dispatch(action);
+        if (dev == dev1) {
+          setConnected(true);
+          const sr = payload.id;
+          setOnoff(payload.darr[0]);
+          setTsec(payload.darr[1]);
+          console.log("sr: ", sr, "key: ", key);
+          setSrkey(key);
+        }
       });
+
     }
+
   }
 
   const doOtherShit = (devs, zones, client) => {
@@ -147,6 +162,20 @@ export default function Control() {
       publish(client, topic, payload);
     }
   }  
+
+  const transferWidgetData = wdata =>{
+    console.log('wdata: ', wdata);
+    const {key, arr} = wdata;
+    const tarr = {ctype:"relay", darr: arr}
+    const action = { type: key, payload: tarr };
+    dispatch(action);
+    const di = getDinfo(key, devs);
+    console.log('di: ', di);
+    const topic = `${di.dev}/cmd`;
+    const payload = `{"id":${di.sr},"sra":[${arr}]}`;
+    console.log("topic,payload: ", topic, payload);
+    publish(client, topic, payload);
+  }
   
   const handleDarrCng = key => event =>{
     // console.log('event.key, key: ', event.key, key);
@@ -154,13 +183,16 @@ export default function Control() {
     if (event.key === 'Enter' || event.key === 'Q'|| event.key=='q') {
       
       const arr = event.target.value.split(',').map(a=>a*1)
-      
-      console.log('arr: ', arr);
+      setOnoff(arr[0] * 1)
+      setTsec(arr[1] * 1)
+      setSrkey(key)
+      console.log('arr: ', arr, 'key: ', key);
       const tarr = {ctype:"relay", darr: arr, timeleft: 0}
       const action = { type: key, payload: tarr };
       dispatch(action);
       console.log('key, event.target: ', key, event.target.value);
       const di = getDinfo(key, devs);
+      console.log('di: ', di);
       const topic = `${di.dev}/cmd`;
       const payload = `{"id":${di.sr},"sra":[${arr}]}`;
       console.log("topic,payload: ", topic, payload);
@@ -187,6 +219,26 @@ export default function Control() {
       publish(client, topic, payload);
     }  
   }
+
+  const renderTimer = () => {   
+    console.log('renderTimer: ', srkey, tsec, onoff);
+    if (onoff==1)
+    return (
+    <div>
+      <span>{srkey} Timer: 
+      <Countdown
+      key={srkey}
+      date={Date.now() + tsec * 1000}
+      renderer={({hours, minutes, seconds, completed }) => (
+        <span>
+          {hours}:{minutes}:{seconds.toString().padStart(2, '0')}
+        </span>
+      )}
+      />
+      </span>
+    </div>
+    );
+  };        
 
   const renderControl = () => {
     if (!error) {
@@ -219,18 +271,18 @@ export default function Control() {
           return(
           <li key={i}>
             <span>  
-              <span>{di.dev } {di.sr} {key} {ctype} {darr}</span>
+              <span>{di.sr} {key} {darr}</span>
               {crInput()}
-              {state[key].pro && 
+              {/* {state[key].pro && 
                 <span> pro: {JSON.stringify(state[key].pro)} [
                 <input size="20" type="text" onKeyDown={handleNewProg(key)}></input> ]
                 </span>
-              }
-              {state[key].timeleft >=0 && 
+              } */}
+              {/* {state[key].timeleft >=0 && 
                 <span> timeleft:  {JSON.stringify(state[key].timeleft)}
                 <input size="1" type="text" onKeyDown={handleTsec(key)}></input>
                 </span>
-              }
+              } */}
 
             </span>
           </li>)
@@ -317,8 +369,15 @@ export default function Control() {
   return (
     <div style={styles.ctrl.div0}>
       {rrender()}
+      
       <h4>Control</h4>
       {renderControl()}
+      {renderTimer()}
+      <MutuallyExclusiveControlGroups 
+        keys={Object.keys(state).slice(0,4)}
+        state={state}
+        transferWidgetData={transferWidgetData}
+      />
     </div>
   );
 }

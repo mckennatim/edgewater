@@ -1,5 +1,6 @@
 import React, {useContext} from 'react'
 import {AContext} from '../contexts/acontext'
+import MutuallyExclusiveControlGroups from './MutuallyExclusiveControlGroups'
 
 
 export default function AddJob (){
@@ -16,7 +17,7 @@ export default function AddJob (){
     <div style ={styles.addjob.div0}>
       AddJob
       <div>{job2edit}</div>
-
+      {MutuallyExclusiveControlGroups()}
       <button onClick={update}>update</button>
     </div>
   )
