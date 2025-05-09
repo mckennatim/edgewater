@@ -132,7 +132,8 @@ var MutuallyExclusiveControlGroups = function MutuallyExclusiveControlGroups(pro
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     style: {
       padding: '20px',
-      maxWidth: '600px'
+      maxWidth: '600px',
+      touchAction: 'none'
     }
   }, controls.map(function (control, idx) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -177,7 +178,8 @@ var MutuallyExclusiveControlGroups = function MutuallyExclusiveControlGroups(pro
       style: {
         margin: '15px 0',
         display: 'flex',
-        alignItems: 'center'
+        alignItems: 'center',
+        touchAction: 'none'
       }
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
       type: "range",
@@ -218,4 +220,4 @@ var MutuallyExclusiveControlGroups = function MutuallyExclusiveControlGroups(pro
 /***/ })
 
 }]);
-//# sourceMappingURL=src_components_AddJob_js.0997b46aa17a4bc917ce.js.map
+//# sourceMappingURL=src_components_AddJob_js.a72d9ab67907b4b2c359.js.map

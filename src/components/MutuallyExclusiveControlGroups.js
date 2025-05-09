@@ -38,7 +38,11 @@ const MutuallyExclusiveControlGroups = (props) => {
   };
 
   return (
-    <div style={{ padding: '20px', maxWidth: '600px' }}>
+    <div style={{ 
+      padding: '20px', 
+      maxWidth: '600px' ,
+      touchAction: 'none',
+      }}>
       {controls.map((control, idx) => (
         <div key={control.id} style={{
           margin: '15px 0',
@@ -77,7 +81,12 @@ const MutuallyExclusiveControlGroups = (props) => {
           </label>
 
           {/* Slider */}
-          <div style={{ margin: '15px 0', display: 'flex', alignItems: 'center' }}>
+          <div style={{ 
+            margin: '15px 0', 
+            display: 'flex', 
+            alignItems: 'center' ,
+            touchAction: 'none',
+            }}>
             <input
               type="range"
               min="15"
