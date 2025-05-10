@@ -168,7 +168,7 @@ export default function Control() {
     const {key, arr} = wdata;
     const tarr = {ctype:"relay", darr: arr}
     const action = { type: key, payload: tarr };
-    dispatch(action);
+    // dispatch(action);
     const di = getDinfo(key, devs);
     console.log('di: ', di);
     const topic = `${di.dev}/cmd`;

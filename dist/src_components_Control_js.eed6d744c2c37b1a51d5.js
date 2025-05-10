@@ -214,7 +214,7 @@ function Control() {
       type: key,
       payload: tarr
     };
-    dispatch(action);
+    // dispatch(action);
     var di = (0,_mckennatim_mqtt_hooks_src__WEBPACK_IMPORTED_MODULE_4__.getDinfo)(key, devs);
     console.log('di: ', di);
     var topic = "".concat(di.dev, "/cmd");
@@ -609,4 +609,4 @@ var Zones = function Zones(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=src_components_Control_js.36ff9202be68d6bfdc3f.js.map
+//# sourceMappingURL=src_components_Control_js.eed6d744c2c37b1a51d5.js.map

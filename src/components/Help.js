@@ -26,23 +26,32 @@ Pressing the Side button for 1 second reboots the Edgewater Water control. This 
 
 <p>On startup, EWC does search for a WIFI connection for about 4 minutes before it is ready to operate.</p>
 
-<p>This app has two pages 'help' and 'contol'. Noah can give you access to the 'control' part of the app which allows you to send commands to the EWC device from the <a href="https://apps.sitebuilt.net/edgewater/#/control">https://apps.sitebuilt.net/edgewater/#/control</a> when the EWC is connected to the internet through a phone hotspot. At this point the app is not at all polished and is mainly used by the device developer for trouble shooting and re-programming.</p>
+
 
 <h4>phone hot spot control</h4>
-<p>Hot spot use allows for quick reset of EWC and for customizing the schedule for EWC</p>
+<p>Hot spot use allows for quick reset of EWC, for testing and for customizing the schedule for EWC</p>
 
 <p>To usr this feature you need to activate the hot spot feature on your phone, then rename the hotspot SSID to "Edgewater" with a password "jjjjjjjj" (8 j's)</p>
 
 <p>Turn on the hotspot and then reboot the EWC device by pressing the side button for 1 second. Press the side button again after 10 seconds Your phone should indicate that 1 device is connected. Now it is ready to operate. This is considerably faster than rebooting without a hotspot on.</p>
 
+<h4>the app: <a href="https://apps.sitebuilt.net/edgewater/#/control">https://apps.sitebuilt.net/edgewater/#/control</a></h4>
+
+<h5>accessing the app on your device</h5>
+<p>Any device that uses the app needs an API key saved to it. To have the app work on your device, go to <a href="https://apps.sitebuilt.net/edgewater/hack">https://apps.sitebuilt.net/edgewater/hack</a>. Click on the button and go back to the control page</p>
+
 <p>The control page of the app, when the EWC is connected to a hotspot, allows for monitoring and control of the device.</p>
+
+<p>This app has two pages 'help' and 'control'. Noah can give you access to the 'control' part of the app which allows you to send commands to the EWC device from the <a href="https://apps.sitebuilt.net/edgewater/#/control">https://apps.sitebuilt.net/edgewater/#/control</a> when the EWC is connected to the internet through a phone hotspot. At this point the app is not at all polished and is mainly used by the device developer for trouble shooting and re-programming.</p>
 
 <h5>control and monitoring and testing</h5> 
 <p>The edgewater app, will show a signal graphic once it hears from the watering controller. It may be a good idea to refresh the app. </p>
 
 <p>To the right of each zone's name, is a number indicating the number of seconds that node is currently set for. To the right of that is in indicator of whether the pump is on or off for that zone.</p>
 
-<p>To change the watering duration for a zone, move the 'slider' for that zone and press the 'send' button. 3600 seconds is one hour. To test all the zones for shorter that the full watering schedule, you can use the 'slider' and 'send' button and reduce the watering time for all the zones. Once you press 'send', the watering controller is updated to the new time value. The number to the right of the zone name should update and the value is stored in the watering device.</p>
+<p>To change the watering duration for a zone, move the 'slider' for that zone and press the 'send' button. 3600 seconds is one hour. To test all the zones for shorter that the full watering schedule, you can use the 'slider' and 'send' button and reduce the watering time for all the zones. Once you press 'send', the watering controller will be updated to the new time value. .  The number to the right of the zone name should update and the value is stored in the watering device. If the the zone's number updates, it means that you are successfully communicating with the EWC device. </p>
+  
+<p>If not, either the app is not connected, the device is not hooked up to Edgewate hostspot, or the device is just not reponding. If the app says 22 for all the zones, that is another indication that things are not OK. Try refreshing the app. If that doesn't work, pull the fuse and tap the side button, wait 5 seconds and tap the side button again. After another 5 seconds, refresh the app again. </p>
 
 <p>To start the watering process from the app, you can select the checkbox, set the slider and press 'send'. The OFF indicator should turn ON and a green color. You can start the watering process from any zone. From there it will go in order until zone4 is finished</p>
 
