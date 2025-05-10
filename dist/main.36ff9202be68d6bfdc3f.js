@@ -3060,17 +3060,19 @@ var NavCtrl = function NavCtrl(props) {
   var renderNav = function renderNav() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", {
       style: styles.nav.nav
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " ", title, " ", devInfo.dev, " ", panes, " ", appid, " ", dev1), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+      style: {
+        fontFamily: 'Arial, sans-serif',
+        fontSize: '1.2em',
+        fontWeight: 'bold',
+        padding: '10px',
+        backgroundColor: 'whitesmoke',
+        borderRadius: '5px',
+        marginBottom: '10px'
+      }
+    }, " ", appid, " ", dev1), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", {
       style: styles.nav.ul
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
-      style: styles.nav.li
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
-      onClick: handlePath('/jobs')
-    }, "jobs")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
-      style: styles.nav.li
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
-      onClick: handlePath('/addjob')
-    }, "addjob")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
       style: styles.nav.li
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
       onClick: handlePath('/help')
@@ -3085,6 +3087,7 @@ var NavCtrl = function NavCtrl(props) {
 var styles = {
   nav: {
     ul: {
+      fontFamily: 'Arial, sans-serif',
       textAlign: 'left',
       listStyleType: 'none',
       paddingLeft: '12px'
@@ -3372,8 +3375,8 @@ var multi = {
   "default": "control",
   jobs: [["Jobs"], ["Jobs", "Help"], ["Jobs", "AddJob", "Help"]],
   addjob: [["AddJob"], ["AddJob", "Jobs"], ["AddJob", "Jobs", "Help"]],
-  help: [["Help"]],
-  control: [["Control"]]
+  help: [["Help"], ["Help", "Control"]],
+  control: [["Control"], ["Control", "Help"]]
 };
 
 
@@ -3618,7 +3621,7 @@ var storageLocal = function storageLocal(itemName) {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("a72d9ab67907b4b2c359")
+/******/ 		__webpack_require__.h = () => ("36ff9202be68d6bfdc3f")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
@@ -3827,4 +3830,4 @@ var storageLocal = function storageLocal(itemName) {
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=main.a72d9ab67907b4b2c359.js.map
+//# sourceMappingURL=main.36ff9202be68d6bfdc3f.js.map

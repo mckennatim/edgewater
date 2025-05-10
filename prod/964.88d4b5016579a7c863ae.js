@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkedgewater=self.webpackChunkedgewater||[]).push([[964],{964:(e,a,t)=>{t.r(a),t.d(a,{default:()=>n});var r=t(41),d=(t(322),t(508));function n(){return r.createElement("div",{style:s.jobs.div0},r.createElement(d.Ay,{date:Date.now()+1e5}),"Jobsaa")}var s={jobs:{div0:{backgroundColor:"#aa9898"}}}}}]);

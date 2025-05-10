@@ -10,7 +10,7 @@ export default function Help(){
 <h2>Edgewater Stewards</h2>
 
 <h3>Intallation and Startup</h3>
-The Edgewater Water Control (EWC) is powered from the USB on the electric panel. Before rebooting with the Side Button or reconnecting to USB, pull the fuses for the outdoor solenoids. Once the EWC has booted up and is running, you can put in the solenoid fuse. You can tell if the EWC is running by pressing the Top Button and seeing an LED go on in the controller. Press the Top Button again to shut it down then put in the solenoid fuse.
+The Edgewater Water Control (EWC) is powered from the USB on the electric panel. <bold>Before rebooting with the Side Button or reconnecting to USB, pull the fuses for the outdoor solenoids.</bold> Once the EWC has booted up and is running, you can put in the solenoid fuse. You can tell if the EWC is running by pressing the Top Button and seeing an LED go on in the controller. Press the Top Button again to shut it down then put in the solenoid fuse.
 
 <h3>Edgwater Water Control basic operation</h3>
 
@@ -33,15 +33,26 @@ Pressing the Side button for 1 second reboots the Edgewater Water control. This 
 
 <p>To usr this feature you need to activate the hot spot feature on your phone, then rename the hotspot SSID to "Edgewater" with a password "jjjjjjjj" (8 j's)</p>
 
-<p>Turn on the hotspot and then reboot the EWC device by pressing the side button for 1 second. In 20 seconds or so, your phone may indicate that 1 device is connected. Now it is ready to operate, pressing the Top Button will start the watering sequence. This is considerably faster than rebooting without a hotspot on.</p>
+<p>Turn on the hotspot and then reboot the EWC device by pressing the side button for 1 second. Press the side button again after 10 seconds Your phone should indicate that 1 device is connected. Now it is ready to operate. This is considerably faster than rebooting without a hotspot on.</p>
 
-<p>The control page of the app, when the EWC is connected to a hotspot, allows for some monitoring and control of the device.</p>
-  
-<h5>monitoring</h5>  
- <p>Each relay has an entry like [ 0, 3600]. The first number is 0 when that relay is off and 1 when the relay is on. The second number is the number of seconds that relay will be on. If the relay is on, 'timeleft' indicates the number of seconds left for that zone.</p>
+<p>The control page of the app, when the EWC is connected to a hotspot, allows for monitoring and control of the device.</p>
 
-<h5>control</h5> 
-<p>To change the watering duration for a zone, enter 0,xxx (no spaces) and press enter where xxx is the watering duration in seconds. To start the watering press from the app, in zone1 enter 1,xxx and press enter. You can also skip a zone and start in zone 2, 3 or 4 by puttin 1,xxx and enter in one of thos boxes. Do not turn on more than one zone at a time as the system is designed to water one zone at a time </p>
+<h5>control and monitoring and testing</h5> 
+<p>The edgewater app, will show a signal graphic once it hears from the watering controller. It may be a good idea to refresh the app. </p>
+
+<p>To the right of each zone's name, is a number indicating the number of seconds that node is currently set for. To the right of that is in indicator of whether the pump is on or off for that zone.</p>
+
+<p>To change the watering duration for a zone, move the 'slider' for that zone and press the 'send' button. 3600 seconds is one hour. To test all the zones for shorter that the full watering schedule, you can use the 'slider' and 'send' button and reduce the watering time for all the zones. Once you press 'send', the watering controller is updated to the new time value. The number to the right of the zone name should update and the value is stored in the watering device.</p>
+
+<p>To start the watering process from the app, you can select the checkbox, set the slider and press 'send'. The OFF indicator should turn ON and a green color. You can start the watering process from any zone. From there it will go in order until zone4 is finished</p>
+
+<p>You can also check that the top button in the shed starts the watering process. Before you do, make sure all the zone indicators show OFF. If not, reset them with unchecking the checkbox and hitting the 'send' button </p>
+
+<h5>Returning to offline watering control</h5>
+<p>Once the testing is complete, go through and set each zone for the time you want. Turn off your phone hotspot and reboot the EWC device by pressing the side button for 1 second. It will try to connect to the internet for as long as 4 minutes before it gives up and goes to offline operation.  To start the watering process press the Top button on the EWC device. </p>
+
+
+ <p></p>
 
     </div>
   )

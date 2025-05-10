@@ -9,8 +9,8 @@ const multi = {
   default: "control",
   jobs: [["Jobs"], ["Jobs", "Help"], ["Jobs", "AddJob", "Help"]],
   addjob: [["AddJob"], ["AddJob", "Jobs"], ["AddJob", "Jobs", "Help"]],
-  help: [["Help"]],
-  control: [["Control"]],
+  help: [["Help"], ["Help", "Control"]],
+  control: [["Control"], ["Control", "Help"]],
 };
 
 export { compoi, multi };

@@ -40,7 +40,7 @@ const MutuallyExclusiveControlGroups = (props) => {
   return (
     <div style={{ 
       padding: '20px', 
-      maxWidth: '600px' ,
+      maxWidth: '400px' ,
       touchAction: 'none',
       }}>
       {controls.map((control, idx) => (
@@ -52,34 +52,81 @@ const MutuallyExclusiveControlGroups = (props) => {
           backgroundColor: control.isChecked ? '#f0f8ff' : 'white'
         }}>
           {/* Checkbox with exclusive selection */}
-          <label style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
-            <input
-              type="checkbox"
-              checked={control.isChecked}
-              onChange={() => handleCheckboxChange(control.id)}
-              style={{ 
-                marginRight: '10px',
-                width: '18px',
-                height: '18px',
-                cursor: 'pointer'
-              }}
-            />
-            <span style={{ 
-              fontSize: '16px', 
-              fontWeight: '500',
-              }}>
-              {keys[idx]} {state[keys[idx]].darr[1]}
+          <span style={{ 
+            display: 'flex', 
+            justifyContent: 'space-between', 
+            width: '100%' 
+            }}>
+            <span>
+              {/* key name */}
+              <span style={{ 
+                fontSize: '16px', 
+                fontWeight: '500',
+                }}>
+                <span style={{
+                  fontSize: '18px',
+                  fontWeight: 'bold',
+                }}>
+                  {keys[idx]}
+              </span> 
+
+              {/* tsec */}
+              <span style={{
+                  padding: '0 5px',
+                }}>
+                  {state[keys[idx]].darr[1]}
+              </span>
+
+              {/* ON */}
               <span style={{ 
                 fontSize: '14px', 
                 color: '#666' ,
                 backgroundColor: state[keys[idx]].darr[0]==1 ? '#4CAF50' : '#cccccc',
+                marginRight: '20px',
                 }}>
                 {state[keys[idx]].darr[0]==1 ? ' ON' : ' OFF'}
               </span>
-
             </span>
-          </label>
-
+            <span>          
+              {/* Custom checkbox*/}
+              <input
+                type="checkbox"
+                checked={control.isChecked}
+                onChange={() => handleCheckboxChange(control.id)}
+                style={{ 
+                  pmarginLeft: '55px',
+                  marginRight: '5px',
+                  width: '18px',
+                  height: '18px',
+                  cursor: 'pointer'
+                }}
+              />
+              {/* Slider Value Display */}
+              <span style={{ 
+                minWidth: '30px', 
+                textAlign: 'center',
+                marginRight: '5px'
+                }}>
+                {control.sliderValue}
+              </span>
+              
+              {/* Send Button */}
+              <button
+                onClick={() => handleSendValues(control.id)}
+                style={{
+                  padding: '4px 8px',
+                  backgroundColor: "#005CC8",
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '4px',
+                  cursor: 'pointer',
+                  fontWeight: 'bold'
+                }}>
+                Send
+              </button>
+            </span>            
+          </span>
+          </span>
           {/* Slider */}
           <div style={{ 
             margin: '15px 0', 
@@ -99,26 +146,8 @@ const MutuallyExclusiveControlGroups = (props) => {
                 cursor: 'pointer'
               }}
             />
-            <span style={{ minWidth: '30px', textAlign: 'center' }}>
-              {control.sliderValue}
-            </span>
           </div>
 
-          {/* Send Button */}
-          <button
-            onClick={() => handleSendValues(control.id)}
-            style={{
-              padding: '8px 16px',
-              backgroundColor: control.isChecked ? '#4CAF50' : '#cccccc',
-              color: control.isChecked ? 'white' : '#666666',
-              border: 'none',
-              borderRadius: '4px',
-              cursor: 'pointer',
-              fontWeight: 'bold'
-            }}
-          >
-            Send Option {control.id} Values
-          </button>
         </div>
       ))}
     </div>

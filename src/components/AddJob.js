@@ -1,24 +1,21 @@
 import React, {useContext} from 'react'
 import {AContext} from '../contexts/acontext'
-import MutuallyExclusiveControlGroups from './MutuallyExclusiveControlGroups'
 
 
 export default function AddJob (){
-  const{foundJobs, setFoundJobs, setJob2edit, job2edit} = useContext(AContext)
 
-  const update =()=>{
-    setFoundJobs([
-      {job:job2edit, category:''},
-      {job:job2edit, category:'maintain'},
-      {job:job2edit, category:'treework'}
-    ])
-  }
   return(
-    <div style ={styles.addjob.div0}>
+    <div>
       AddJob
-      <div>{job2edit}</div>
-      {MutuallyExclusiveControlGroups()}
-      <button onClick={update}>update</button>
+      <button>update</button>
+      <span style={{ 
+        display: 'flex', 
+        justifyContent: 'space-between', 
+        width: '100%' 
+        }}>
+        <span>leftContent</span>
+        <span>rightContent</span>
+      </span>
     </div>
   )
 }  

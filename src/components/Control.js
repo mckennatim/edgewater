@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect, useReducer } from "react";
 import Countdown from 'react-countdown';
-import MutuallyExclusiveControlGroups from './MutuallyExclusiveControlGroups';
+import Zones from './Zones';
 import Icon from "@mui/material/Icon";
 import { 
   SignalCellularAlt, 
@@ -222,20 +222,52 @@ export default function Control() {
 
   const renderTimer = () => {   
     console.log('renderTimer: ', srkey, tsec, onoff);
-    if (onoff==1)
     return (
-    <div>
-      <span>{srkey} Timer: 
+    <div style ={{
+      margin: '0px 100px 0px 100px',
+      border: '1px solid #ddd',
+      borderRadius: '30px',
+      maxWidth: '220px',
+      textAlign: 'center',
+      backgroundColor: 'white',
+      height: '50px',
+      }}>
+      <span style={{
+        fontFamily: "Arial",
+        fontSize: "1.2em",
+        fontWeight: "bold", 
+        padding: '5px 5px',
+      }}>
+        Timer</span><br/>
+      {/* {onoff==1 && */}
+      <span style={{
+        fontFamily: "Arial",
+        fontSize: "1.2em",
+        fontWeight: "bold",
+      }}> 
       <Countdown
-      key={srkey}
-      date={Date.now() + tsec * 1000}
-      renderer={({hours, minutes, seconds, completed }) => (
-        <span>
-          {hours}:{minutes}:{seconds.toString().padStart(2, '0')}
-        </span>
-      )}
+        key={srkey}
+        date={Date.now() + tsec * 1000}
+        renderer={({hours, minutes, seconds, completed }) => {
+          if (!onoff) {
+            // Render a completed state
+            console.log('completed: ', completed);
+            return <span>off</span>;
+          }else {
+          return(
+            <span>
+              <span style={{paddingRight:'8px'}}>{srkey}</span>
+              {hours > 0 && `${hours}:`}
+              {minutes.toString().padStart(2, '0')}:
+              {seconds.toString().padStart(2, '0')}
+            </span>
+          )
+        }
+        }
+      }
       />
-      </span>
+      </span>      
+
     </div>
     );
   };        
@@ -273,16 +305,7 @@ export default function Control() {
             <span>  
               <span>{di.sr} {key} {darr}</span>
               {crInput()}
-              {/* {state[key].pro && 
-                <span> pro: {JSON.stringify(state[key].pro)} [
-                <input size="20" type="text" onKeyDown={handleNewProg(key)}></input> ]
-                </span>
-              } */}
-              {/* {state[key].timeleft >=0 && 
-                <span> timeleft:  {JSON.stringify(state[key].timeleft)}
-                <input size="1" type="text" onKeyDown={handleTsec(key)}></input>
-                </span>
-              } */}
+
 
             </span>
           </li>)
@@ -321,25 +344,36 @@ export default function Control() {
           <header style={styles.header}>
             <div style={styles.container}>
               <div style={styles.ul}>
-                <div>
-                  <a style={styles.a} href="./">
-                  </a>
+                <div style={{
+                  fontFamily: "Arial",
+                  fontSize: "1.2em",
+                  fontWeight: "bold",
+                }}>
                   {locdata && locdata.loc}{" "}
                 </div>
               </div>
               {connected ? (
-                <div style={styles.ur}>
-                  <SignalCellularAlt/>
+                <div style={{
+                  paddingLeft: "10px",
+                  }}>
+                  <SignalCellularAlt fontSize="large"/>
                 </div>
               ): (
-                <div style={styles.ur}>
-                  <Block/>
+                <div style={{
+                  paddingLeft: "10px",
+                  }}>
+                  <Block fontSize="large"/>
                 </div>
               )}
               <div style={styles.ll}>
                 <div style={styles.txt}>
-                  <span style={styles.otxt}>outside: </span>
+                  <span style={{
+                    fontFamily: "arial",
+                  }}>
+                    outside: 
                   {state.temp_out.darr[0]} &deg;F
+                  </span>
+
                 </div>
               </div>
             </div>
@@ -369,15 +403,14 @@ export default function Control() {
   return (
     <div style={styles.ctrl.div0}>
       {rrender()}
-      
-      <h4>Control</h4>
-      {renderControl()}
       {renderTimer()}
-      <MutuallyExclusiveControlGroups 
+      <Zones 
         keys={Object.keys(state).slice(0,4)}
         state={state}
         transferWidgetData={transferWidgetData}
       />
+      <h4>Control</h4>
+      {renderControl()}
     </div>
   );
 }
@@ -388,4 +421,10 @@ const styles = {
       backgroundColor: "#e5bf37",
     },
   },
-};
+  ll: {
+    padding: "5px 10px 3px 10px",
+  },
+  ul: {
+    padding: "10px 10px 2px 10px",
+  },
+  };

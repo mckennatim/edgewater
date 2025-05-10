@@ -14,7 +14,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_countdown__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-countdown */ "../../node_modules/react-countdown/dist/index.es.js");
-/* harmony import */ var _MutuallyExclusiveControlGroups__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MutuallyExclusiveControlGroups */ "./src/components/MutuallyExclusiveControlGroups.js");
+/* harmony import */ var _Zones__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Zones */ "./src/components/Zones.js");
 /* harmony import */ var _mui_icons_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/icons-material */ "../../node_modules/@mui/icons-material/esm/SignalCellularAlt.js");
 /* harmony import */ var _mui_icons_material__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/icons-material */ "../../node_modules/@mui/icons-material/esm/Block.js");
 /* harmony import */ var _utilities_getCfg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utilities/getCfg */ "./src/utilities/getCfg.js");
@@ -276,7 +276,30 @@ function Control() {
   };
   var renderTimer = function renderTimer() {
     console.log('renderTimer: ', srkey, tsec, onoff);
-    if (onoff == 1) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, srkey, " Timer:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_countdown__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      style: {
+        margin: '0px 100px 0px 100px',
+        border: '1px solid #ddd',
+        borderRadius: '30px',
+        maxWidth: '220px',
+        textAlign: 'center',
+        backgroundColor: 'white',
+        height: '50px'
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+      style: {
+        fontFamily: "Arial",
+        fontSize: "1.2em",
+        fontWeight: "bold",
+        padding: '5px 5px'
+      }
+    }, "Timer"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+      style: {
+        fontFamily: "Arial",
+        fontSize: "1.2em",
+        fontWeight: "bold"
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_countdown__WEBPACK_IMPORTED_MODULE_1__["default"], {
       key: srkey,
       date: Date.now() + tsec * 1000,
       renderer: function renderer(_ref) {
@@ -284,7 +307,17 @@ function Control() {
           minutes = _ref.minutes,
           seconds = _ref.seconds,
           completed = _ref.completed;
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, hours, ":", minutes, ":", seconds.toString().padStart(2, '0'));
+        if (!onoff) {
+          // Render a completed state
+          console.log('completed: ', completed);
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "off");
+        } else {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+            style: {
+              paddingRight: '8px'
+            }
+          }, srkey), hours > 0 && "".concat(hours, ":"), minutes.toString().padStart(2, '0'), ":", seconds.toString().padStart(2, '0'));
+        }
       }
     })));
   };
@@ -339,20 +372,33 @@ function Control() {
         style: styles.container
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         style: styles.ul
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
-        style: styles.a,
-        href: "./"
-      }), locdata && locdata.loc, " ")), connected ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-        style: styles.ur
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material__WEBPACK_IMPORTED_MODULE_6__["default"], null)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-        style: styles.ur
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material__WEBPACK_IMPORTED_MODULE_7__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        style: {
+          fontFamily: "Arial",
+          fontSize: "1.2em",
+          fontWeight: "bold"
+        }
+      }, locdata && locdata.loc, " ")), connected ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        style: {
+          paddingLeft: "10px"
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        fontSize: "large"
+      })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        style: {
+          paddingLeft: "10px"
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        fontSize: "large"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         style: styles.ll
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         style: styles.txt
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
-        style: styles.otxt
-      }, "outside: "), state.temp_out.darr[0], " \xB0F")))));
+        style: {
+          fontFamily: "arial"
+        }
+      }, "outside:", state.temp_out.darr[0], " \xB0F"))))));
     } else {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "From this app on this machine's perspective, ", error.qmessage, " It is probably best to", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
         onClick: goSignin
@@ -361,26 +407,32 @@ function Control() {
   };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     style: styles.ctrl.div0
-  }, rrender(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Control"), renderControl(), renderTimer(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MutuallyExclusiveControlGroups__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, rrender(), renderTimer(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Zones__WEBPACK_IMPORTED_MODULE_2__["default"], {
     keys: Object.keys(state).slice(0, 4),
     state: state,
     transferWidgetData: transferWidgetData
-  }));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Control"), renderControl());
 }
 var styles = {
   ctrl: {
     div0: {
       backgroundColor: "#e5bf37"
     }
+  },
+  ll: {
+    padding: "5px 10px 3px 10px"
+  },
+  ul: {
+    padding: "10px 10px 2px 10px"
   }
 };
 
 /***/ }),
 
-/***/ "./src/components/MutuallyExclusiveControlGroups.js":
-/*!**********************************************************!*\
-  !*** ./src/components/MutuallyExclusiveControlGroups.js ***!
-  \**********************************************************/
+/***/ "./src/components/Zones.js":
+/*!*********************************!*\
+  !*** ./src/components/Zones.js ***!
+  \*********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -402,7 +454,7 @@ function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length)
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
-var MutuallyExclusiveControlGroups = function MutuallyExclusiveControlGroups(props) {
+var Zones = function Zones(props) {
   var keys = props.keys,
     state = props.state,
     transferWidgetData = props.transferWidgetData;
@@ -456,52 +508,82 @@ var MutuallyExclusiveControlGroups = function MutuallyExclusiveControlGroups(pro
   };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     style: {
-      padding: '20px',
-      maxWidth: '600px',
+      padding: '10px',
+      maxWidth: '400px',
       touchAction: 'none'
     }
   }, controls.map(function (control, idx) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       key: control.id,
       style: {
-        margin: '15px 0',
-        padding: '15px',
+        margin: '10px 0',
+        padding: '10px',
         border: '1px solid #ddd',
         borderRadius: '8px',
         backgroundColor: control.isChecked ? '#f0f8ff' : 'white'
       }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
       style: {
         display: 'flex',
-        alignItems: 'center',
-        cursor: 'pointer'
+        justifyContent: 'space-between',
+        width: '100%'
       }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+      style: {
+        fontSize: '16px',
+        fontWeight: '500'
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+      style: {
+        fontSize: '18px',
+        fontWeight: 'bold'
+      }
+    }, keys[idx]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+      style: {
+        padding: '0 5px'
+      }
+    }, state[keys[idx]].darr[1]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+      style: {
+        fontSize: '14px',
+        color: '#666',
+        backgroundColor: state[keys[idx]].darr[0] == 1 ? '#4CAF50' : '#cccccc',
+        marginRight: '20px'
+      }
+    }, state[keys[idx]].darr[0] == 1 ? ' ON' : ' OFF')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
       type: "checkbox",
       checked: control.isChecked,
       onChange: function onChange() {
         return handleCheckboxChange(control.id);
       },
       style: {
-        marginRight: '10px',
+        pmarginLeft: '55px',
+        marginRight: '5px',
         width: '18px',
         height: '18px',
         cursor: 'pointer'
       }
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
       style: {
-        fontSize: '16px',
-        fontWeight: '500'
+        minWidth: '30px',
+        textAlign: 'center',
+        marginRight: '5px'
       }
-    }, keys[idx], " ", state[keys[idx]].darr[1], /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    }, control.sliderValue), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+      onClick: function onClick() {
+        return handleSendValues(control.id);
+      },
       style: {
-        fontSize: '14px',
-        color: '#666',
-        backgroundColor: state[keys[idx]].darr[0] == 1 ? '#4CAF50' : '#cccccc'
+        padding: '4px 8px',
+        backgroundColor: "#005CC8",
+        color: 'white',
+        border: 'none',
+        borderRadius: '4px',
+        cursor: 'pointer',
+        fontWeight: 'bold'
       }
-    }, state[keys[idx]].darr[0] == 1 ? ' ON' : ' OFF'))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    }, "Send")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       style: {
-        margin: '15px 0',
+        margin: '5px 0',
         display: 'flex',
         alignItems: 'center',
         touchAction: 'none'
@@ -519,30 +601,12 @@ var MutuallyExclusiveControlGroups = function MutuallyExclusiveControlGroups(pro
         marginRight: '10px',
         cursor: 'pointer'
       }
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
-      style: {
-        minWidth: '30px',
-        textAlign: 'center'
-      }
-    }, control.sliderValue)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-      onClick: function onClick() {
-        return handleSendValues(control.id);
-      },
-      style: {
-        padding: '8px 16px',
-        backgroundColor: control.isChecked ? '#4CAF50' : '#cccccc',
-        color: control.isChecked ? 'white' : '#666666',
-        border: 'none',
-        borderRadius: '4px',
-        cursor: 'pointer',
-        fontWeight: 'bold'
-      }
-    }, "Send Option ", control.id, " Values"));
+    })));
   }));
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MutuallyExclusiveControlGroups);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Zones);
 
 /***/ })
 
 }]);
-//# sourceMappingURL=src_components_Control_js.a72d9ab67907b4b2c359.js.map
+//# sourceMappingURL=src_components_Control_js.36ff9202be68d6bfdc3f.js.map

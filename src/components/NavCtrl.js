@@ -10,14 +10,22 @@ export const NavCtrl=(props)=>{
   const renderNav = ()=>{
     return(
     <nav style ={styles.nav.nav}>
-      <span> {title} {devInfo.dev} {panes} {appid} {dev1}</span>
+      <span style={{
+        fontFamily: 'Arial, sans-serif',
+        fontSize: '1.2em',
+        fontWeight: 'bold',
+        padding: '10px',
+        backgroundColor: 'whitesmoke',
+        borderRadius: '5px',
+        marginBottom: '10px'
+      }}> {appid} {dev1}</span>
       <ul style ={styles.nav.ul}>
-        <li style ={styles.nav.li}>
+        {/* <li style ={styles.nav.li}>
           <a onClick={handlePath('/jobs')}>jobs</a>
         </li>
         <li style ={styles.nav.li}>
           <a onClick={handlePath('/addjob')}>addjob</a>
-        </li>
+        </li> */}
         <li style ={styles.nav.li}>
           <a onClick={handlePath('/help')}>help</a>
         </li>
@@ -41,6 +49,7 @@ export const NavCtrl=(props)=>{
 const styles ={
   nav: {
     ul:{
+      fontFamily: 'Arial, sans-serif',
       textAlign: 'left',
       listStyleType: 'none',
       paddingLeft: '12px'
